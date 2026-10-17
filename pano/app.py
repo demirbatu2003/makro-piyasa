@@ -24,4 +24,7 @@ sayfalar = [
     st.Page(S + "s11_beklenti.py", title="11 Koşullu Beklenti ve Şoklar", url_path="beklenti"),
     st.Page(S + "s12_makas.py", title="12 İkili Makas ve Göreli Değer", url_path="makas"),
 ]
+# Özel sayfa: dosya yalnız bu bilgisayarda var (.gitignore); klonlanan sürümde yoksa atlanır.
+if (Path(__file__).resolve().parent / "sayfalar" / "s13_stratejiler.py").exists():
+    sayfalar.append(st.Page(S + "s13_stratejiler.py", title="13 Stratejiler", url_path="stratejiler"))
 st.navigation(sayfalar).run()
