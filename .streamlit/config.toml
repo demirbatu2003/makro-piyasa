@@ -1,0 +1,10 @@
+# Pano acik temaya sabit: harita etiketleri (koyu renk) her zaman okunakli kalir.
+[theme]
+base = "light"
+textColor = "#111111"
+
+[browser]
+gatherUsageStats = false
+
+[server]
+runOnSave = false

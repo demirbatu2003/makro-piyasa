@@ -1,0 +1,15 @@
+# Veri (kaynaklardan yeniden çekilir; paylaşılmaz)
+veri/
+*.sqlite
+*.sqlite-*
+*.pid
+*.log
+
+# Python / araç önbellekleri
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Yerel ayarlar / gizli anahtarlar
+.env
+*.local.toml
