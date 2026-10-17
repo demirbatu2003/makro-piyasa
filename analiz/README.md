@@ -61,3 +61,10 @@ min gözlem 60g->40, 250g->150; fiyat log-getiri, faiz bp.
 - `ikili_makas_serisi(getiri, a, b, kisa_pencere=20, uzun_pencere=250, makas_turu='beta')` seçili çift için normalize performans, ex-ante beta ve makas Z-skoru serileri
 - `makas_geri_donus_testi(getiri, a, b, ...)` $\pm k\sigma$ aşım olaylarından sonraki 5, 10, 20 iş gününde makasın ters yönde kapanma oranı ve medyan kapanma miktarı
 
+## iliski (Ekran 1 kısmi matris sekmesi, Ekran 2)
+- `aralik_ozeti(...)` seçilen tarih aralığının tamamı için Spearman/Pearson, Fisher %95 aralığı, beta ve n
+- `kismi_korelasyon(...)` / `kismi_korelasyon_matrisi(...)` kontrol değişkenlerinin etkisi (OLS artıkları; Spearman için önce rank) çıkarıldıktan sonraki korelasyon
+- `rolling_beta(...)` zaman içindeki beta, ±1,96 standart hata bandıyla
+
+## kriz (Ekran 4 kriz anı ilişkisi)
+- `kuyruk_iliskisi(...)` referans varlığın alt kuyruk günlerinde (varsayılan alt %10) ve normal günlerde korelasyon, ortak düşüş oranı ve bağımsızlık beklentisi, n'lerle

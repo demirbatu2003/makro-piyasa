@@ -13,3 +13,7 @@ __pycache__/
 # Yerel ayarlar / gizli anahtarlar
 .env
 *.local.toml
+
+# Özel: strateji sayfası ve kodu GitHub'a ÇIKMAZ (kullanıcı isteği, 2026-10-17)
+pano/sayfalar/s13_*.py
+pano/strateji/

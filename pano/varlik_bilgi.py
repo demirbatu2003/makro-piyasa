@@ -210,6 +210,13 @@ _e("BIST100", "BIST 100", "Borsa İstanbul'daki en büyük 100 şirketin endeksi
    "Hisseler doğrudan aracı kurumlarla; BIST30 vadeli kontratları VİOP'ta; endeks fonları/ETF'ler TEFAS veya borsada. " + _DANIS,
    ["Türkiye'nin risk algısı, TL ve faiz beklentileriyle yakından bağlıdır.", "TL değer kaybında nominal TL endeks yükselirken USD bazlı getiri farklı olabilir.", "Bankalar endekste ağırlıklıdır; faiz kararlarına duyarlıdır."],
    "Yahoo, XU100.IS, günlük (TL).", "Endeks TL cinsindendir; USD bazı için USDTRY ile çevrilir. " + _BORSA_NOT)
+_e("BIST30", "BIST 30", "Borsa İstanbul'da en büyük ve en çok işlem gören 30 şirketin endeksi.",
+   "Borsa İstanbul tarafından hesaplanan, BIST 100 içindeki en büyük ve en likit 30 hisseden oluşan endekstir. BIST 100'ün 'çekirdeği' gibidir, bu yüzden ikisi çok benzer hareket eder. Birim: endeks puanı (TL bazlı).",
+   _ENDEKS_ISLEM + "Türkiye'den en doğrudan yol VİOP'taki BIST 30 vadeli kontratlarıdır (kaldıraçlı, vadeli işlem hesabı gerekir); ayrıca BIST 30'u izleyen borsa yatırım fonları (ETF) ve endeks fonları; ürün listesi değişebilir.",
+   "Borsa İstanbul, hafta içi; sürekli işlem yaklaşık 10:00-18:00 (Türkiye saati, değişebilir). Panoda yaklaşık 15:00 UTC kapanış kullanılır.",
+   "Hisseler doğrudan aracı kurumlarla; BIST 30 vadeli kontratları VİOP'ta; endeks fonları/ETF'ler TEFAS veya borsada. " + _DANIS,
+   ["Bankalar ve büyük holdingler ağırlıklıdır; Türkiye riski, TL ve faiz beklentileriyle yakından bağlıdır.", "BIST100 ile neredeyse aynı yönde hareket eder; fark küçük şirketlerin payından gelir.", "TL değer kaybında nominal TL endeks yükselirken USD bazlı getiri farklı olabilir."],
+   "Yahoo, XU030.IS, günlük (TL).", "Endeks TL cinsindendir; USD bazı için USDTRY ile çevrilir. " + _BORSA_NOT)
 _e("SPX", "S&P 500", "ABD'nin en büyük 500 şirketinin piyasa değeri ağırlıklı endeksi.",
    "S&P Dow Jones Indices tarafından hesaplanır; ABD hisse piyasasının büyük bölümünü temsil eder. Birim: endeks puanı, USD.",
    _ENDEKS_ISLEM + "Örnekler: SPY, VOO, IVV (ETF'ler); CME ES ve MES vadelileri; opsiyonlar.",

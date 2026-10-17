@@ -12,7 +12,7 @@ import varlik_bilgi as vb
 def test_hepsi_var_ve_dolu():
     kat = oku.katalog()
     kodlar = set(kat[(kat["v1"] == True) | (kat["kod"].str.startswith("ALT_"))]["kod"])
-    assert len(kodlar) == 55, len(kodlar)
+    assert len(kodlar) == 56, len(kodlar)
     eksik = kodlar - set(vb.BILGI)
     assert not eksik, eksik
     for k in kodlar:

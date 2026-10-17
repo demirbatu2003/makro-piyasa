@@ -9,7 +9,7 @@ import pandas as pd  # noqa: E402
 import plotly.graph_objects as go  # noqa: E402
 import streamlit as st  # noqa: E402
 
-from analiz import korelasyon, rejim  # noqa: E402
+from analiz import korelasyon, kriz, rejim  # noqa: E402
 
 ortak.sayfa_basi("4 Rejim ve Beta",
                  "Yüksek VIX rejiminde korelasyonların yükselmesi 'bulaşma' kanıtı değildir; kısmen volatilite artışının ölçüm "
@@ -61,8 +61,56 @@ fv.add_hline(y=ust, line_dash="dot", line_color="gray")
 fv.update_layout(height=240, margin=dict(l=10, r=10, t=30, b=10), title=dict(text="VIX seviyesi ve rejim eşikleri", font=dict(size=13)))
 ortak.goster(fv)
 
+kodlar = list(g.columns)
+# ---- kriz anı ilişkisi
+st.subheader("(b) Kriz anı ilişkisi: sert düşüş günlerinde ne oluyor?")
+kc1, kc2, kc3 = st.columns(3)
+with kc1:
+    kref = st.selectbox("Referans varlık", kodlar, index=kodlar.index("SPX") if "SPX" in kodlar else 0, format_func=et, key="s4_kriz_ref")
+with kc2:
+    kesik = st.select_slider("Kuyruk eşiği (referansın en kötü günleri)", [0.05, 0.10, 0.15, 0.20], value=0.10,
+                            format_func=lambda v: "alt %%%d" % round(v * 100), key="s4_kriz_esik")
+with kc3:
+    kmin = st.number_input("Güvenilir sayılması için en az kuyruk günü", 10, 200, 30, 5, key="s4_kriz_min")
+kt = kriz.kuyruk_iliskisi(g, kref, kuyruk=kesik, yontem=a.yontem, min_kuyruk=int(kmin))
+kt = kt.join(kat.set_index("kod")[["kategori"]])
+kg = kt.dropna(subset=["ortak_dusus"]).sort_values("ortak_dusus", ascending=False)
+if len(kg):
+    renk = [ortak.KAT_RENK.get(k, "#999") if y else "#cccccc" for k, y in zip(kg["kategori"], kg["yeterli"])]
+    fk = go.Figure(go.Bar(x=kg.index, y=kg["ortak_dusus"] * 100, marker_color=renk, customdata=np.column_stack([kg["n_kuyruk"], kg["kor_kuyruk"], kg["kor_normal"]]),
+                          hovertemplate="%{x}<br>ortak düşüş %{y:.0f}%<br>kuyruk günü n=%{customdata[0]}<br>kuyruk kor=%{customdata[1]:.2f}, normal kor=%{customdata[2]:.2f}<extra></extra>"))
+    fk.add_hline(y=kesik * 100, line_dash="dash", line_color="#d62728",
+                 annotation_text="bağımsızlıkta beklenen: %%%d" % round(kesik * 100), annotation_position="top right")
+    fk.update_layout(height=380, margin=dict(l=10, r=10, t=40, b=10),
+                     title=dict(text="%s en kötü %%%d günündeyken diğerinin de kendi en kötü %%%d'inde olma payı (gri: az gözlem)" % (
+                         kref, round(kesik * 100), round(kesik * 100)), font=dict(size=13)),
+                     yaxis_title="ortak düşüş oranı (%)")
+    fk.update_xaxes(tickangle=90, tickfont=dict(size=9))
+    ortak.goster(fk)
+kgos = kt[["kor_kuyruk", "kor_normal", "ortak_dusus", "beklenen", "n_kuyruk", "n_normal", "yeterli"]].copy()
+kgos["ortak_dusus"] = kgos["ortak_dusus"] * 100
+kgos["beklenen"] = kgos["beklenen"] * 100
+kgos["kor_fark"] = kgos["kor_kuyruk"] - kgos["kor_normal"]
+kgos = kgos.sort_values("ortak_dusus", ascending=False)
+kgos.columns = ["kuyruk korelasyonu", "normal gün korelasyonu", "ortak düşüş (%)", "beklenen (%)", "n kuyruk", "n normal", "yeterli", "fark"]
+kstil = kgos.style.apply(lambda r: ["color: #999999" if not r["yeterli"] else "" for _ in r], axis=1).format(
+    {"kuyruk korelasyonu": "{:.2f}", "normal gün korelasyonu": "{:.2f}", "ortak düşüş (%)": "{:.0f}", "beklenen (%)": "{:.0f}", "fark": "{:+.2f}"}, na_rep="-")
+ortak.tablo(kstil)
+st.caption("Gri satırlar: kuyruk günü sayısı %d'in altında, sonuç güvenilmez. Eşikler her serinin kendi geçmiş dağılımındandır (tüm örnek, sonradan bakış). "
+           "Kuyruk korelasyonu aralığı daraltılmış veride hesaplandığı için mekanik olarak düşük çıkma eğilimindedir; asıl okunacak kısım "
+           "ortak düşüş oranının beklenen orandan ne kadar büyük olduğudur." % int(kmin))
+with st.expander("Nasıl okunur? (kriz anı ilişkisi)"):
+    st.markdown(
+        "Soru: **çeşitlendirme en çok gerektiğinde işe yarıyor mu?** Referans varlığın (ör. SPX) en kötü günlerini ayırıyoruz."
+        "\n\n- **Ortak düşüş oranı:** referans en kötü %10'luk dilimindeyken, diğer varlığın da kendi en kötü %10'luk diliminde olduğu günlerin payı. "
+        "İki varlık birbirinden bağımsız olsaydı bu pay yaklaşık %10 çıkardı (kırmızı kesikli çizgi). %10'a yakınsa o varlık krizde sizi korur gibi davranıyor; "
+        "%40-50 gibi yüksek bir değer, o varlığın referansla birlikte çöktüğünü, yani tam gerektiğinde çeşitlendirme sağlamadığını gösterir."
+        "\n- **Kuyruk ve normal gün korelasyonu:** kuyruk günlerindeki korelasyon normal günlerdekinden belirgin büyükse, ilişki kriz anında güçleniyor demektir. "
+        "Küçük bir kuyruk örneğinde bu sayılar oynaktır; gri satırlara güvenmeyin."
+        "\n- Ortak düşüş oranı %10'un belirgin altındaysa ve korelasyon negatifse, bu varlık düşüşlerde tersine hareket ediyor olabilir.")
+
 # ---- beta tablosu
-st.subheader("(b) Beta tablosu")
+st.subheader("(c) Beta tablosu")
 kodlar = list(g.columns)
 ref = st.selectbox("Referans varlık (x)", kodlar, index=kodlar.index("SPX") if "SPX" in kodlar else 0, format_func=et)
 bt = rejim.beta_tablosu(g, ref, pencere=a.pencere)

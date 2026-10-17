@@ -22,15 +22,15 @@ Kullanıcının verdiği işler. **Şimdi yapılmayacak**, en sonda topluca yap�
 12. ✅ yapıldı (2026-10-17) - Yeni sayfa "Kavramlar". SADECE kullanıcının verdiği kavramlar (kendiliğinden ekleme yok): VIX, beta, korelasyon, Spearman, Pearson, normalize, Fisher (Fisher z). Her biri detaylı, sade Türkçe açıklama + matematiği (formül) + panodan örnek. Kullanıcı yeni kavram verdikçe eklenecek.
 
 ## Yeni varlıklar
-13. BIST30 endeksini ekle (toplayıcı + katalog + bilgi kartı + panolar). Yahoo kodu muhtemelen XU030.IS, doğrulanacak. ŞİMDİ YAPMA, kullanıcı söyleyince.
+13. ✅ yapıldı (2026-10-17) - BIST30 endeksini ekle (toplayıcı + katalog + bilgi kartı + panolar). Yahoo kodu muhtemelen XU030.IS, doğrulanacak. ŞİMDİ YAPMA, kullanıcı söyleyince.
 
 ## İkili İlişki (Ekran 2)
-14. Tarih aralığı seçici şu an sadece grafiği kırpıyor; korelasyon hep son 60g/250g. İstenen: seçilen tarih aralığının TAMAMI için tek bir korelasyon (+ n, Fisher %95 aralığı, beta) gösterilsin; ayrıca aralık seçici daha görünür olsun ve hazır kısayollar (son 1 ay / 3 ay / 1 yıl / 3 yıl / tümü) eklensin. Opsiyonel: pencere uzunluğu (60/250 dışında, örn. 20/120) seçilebilsin. ŞİMDİ YAPMA (Gemini repo üzerinde çalışıyor), kullanıcı söyleyince.
+14. ✅ yapıldı (2026-10-17) - Tarih aralığı seçici şu an sadece grafiği kırpıyor; korelasyon hep son 60g/250g. İstenen: seçilen tarih aralığının TAMAMI için tek bir korelasyon (+ n, Fisher %95 aralığı, beta) gösterilsin; ayrıca aralık seçici daha görünür olsun ve hazır kısayollar (son 1 ay / 3 ay / 1 yıl / 3 yıl / tümü) eklensin. Opsiyonel: pencere uzunluğu (60/250 dışında, örn. 20/120) seçilebilsin. ŞİMDİ YAPMA (Gemini repo üzerinde çalışıyor), kullanıcı söyleyince.
 
 ## Yeni istatistikler (GPT önerisinden seçilenler)
-15. Kısmi korelasyon (partial correlation): iki varlık arasındaki ilişkiyi seçilen kontrol değişken(ler)i (örn. DXY, SPX) çıkarıldıktan sonra göster. "Gerçek bağ mı, ortak sebep mi?" Hem ikili ilişki sayfasında (kontrol seçimi) hem mümkünse matris olarak.
-16. Kriz anı ilişkisi: sert düşüş günlerinde (örn. bir varlığın alt %10 günleri) korelasyon / ortak düşüş oranı vs normal günler. Quantile regression yerine anlaşılır "exceedance correlation / downside correlation" versiyonu.
-17. Rolling beta'nın zaman içindeki grafiği (şu an sadece son değer gösteriliyor), güven bandıyla.
+15. ✅ yapıldı (2026-10-17) - Kısmi korelasyon (partial correlation): iki varlık arasındaki ilişkiyi seçilen kontrol değişken(ler)i (örn. DXY, SPX) çıkarıldıktan sonra göster. "Gerçek bağ mı, ortak sebep mi?" Hem ikili ilişki sayfasında (kontrol seçimi) hem mümkünse matris olarak.
+16. ✅ yapıldı (2026-10-17) - Kriz anı ilişkisi: sert düşüş günlerinde (örn. bir varlığın alt %10 günleri) korelasyon / ortak düşüş oranı vs normal günler. Quantile regression yerine anlaşılır "exceedance correlation / downside correlation" versiyonu.
+17. ✅ yapıldı (2026-10-17) - Rolling beta'nın zaman içindeki grafiği (şu an sadece son değer gösteriliyor), güven bandıyla.
 (Atlananlar: Kendall Tau, Granger, Mutual Information, Cointegration — gerekçe sohbette.) ŞİMDİ YAPMA: Gemini bitince, kullanıcı söyleyince tek paket.
 
 ## Hatalar

@@ -65,6 +65,7 @@ _ekle("BRENT", "Brent (BZ=F vadeli)", "emtia", "fiyat", "yahoo", "BZ=F", "gunluk
 _ekle("BAKIR", "Bakir (HG=F vadeli)", "emtia", "fiyat", "yahoo", "HG=F", "gunluk", _VD, "USD")
 
 _B = [("BIST100", "BIST 100", "XU100.IS", "Istanbul seansi kapanisi (~15:00 UTC)", "TRY", "USDTRY", 0),
+      ("BIST30", "BIST 30", "XU030.IS", "Istanbul seansi kapanisi (~15:00 UTC)", "TRY", "USDTRY", 0),
       ("SPX", "S&P 500", "^GSPC", "ABD seansi kapanisi (~21:00 UTC)", "USD", None, 0),
       ("NASDAQ", "Nasdaq Composite", "^IXIC", "ABD seansi kapanisi (~21:00 UTC)", "USD", None, 0),
       ("DAX", "DAX", "^GDAXI", "Frankfurt seansi kapanisi (~16:30 UTC)", "EUR", "EURUSD", 1),
