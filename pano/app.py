@@ -21,5 +21,7 @@ sayfalar = [
     st.Page(S + "s8_yavas.py", title="8 Yavaş / Bağlam", url_path="yavas"),
     st.Page(S + "s9_kavramlar.py", title="9 Kavramlar", url_path="kavramlar"),
     st.Page(S + "s10_benzer_gunler.py", title="10 Benzer Günler", url_path="benzer"),
+    st.Page(S + "s11_beklenti.py", title="11 Koşullu Beklenti ve Şoklar", url_path="beklenti"),
+    st.Page(S + "s12_makas.py", title="12 İkili Makas ve Göreli Değer", url_path="makas"),
 ]
 st.navigation(sayfalar).run()

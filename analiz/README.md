@@ -50,3 +50,14 @@ min gözlem 60g->40, 250g->150; fiyat log-getiri, faiz bp.
 - Analog / koşullu taban oranı; tahmin değil. `ozellik_tablosu`, `zskor` (genişleyen, 500g ısınma), `hedef_seviyeleri`, `ileri_getiriler(seviye, ufuk)`,
   `analog_bul` (Öklid, aday kesimi H+5, ±20g bağımsızlık), `analiz`/`karsilastir` (analog vs koşulsuz), `walk_forward`, `walk_forward_ozet`, `walk_forward_yorum`, `bugunun_durumu`.
 - Özellik için son gözlem en fazla 5 takvim günü taşınır; sonuçlarda ileri doldurma yok. Ayrıntı: modül docstring'i.
+
+## beklenti (Ekran 11 Koşullu Beklenti ve Şoklar)
+- `son_soklari_bul(getiri, pencere_gun=10, k=1.8, sigma_pencere=60)` son iş günlerinde ex-ante σ'ya göre |z| >= k hareket eden varlıklar
+- `sok_beklentisi(getiri, tetik, yon, k=1.8, ufuk=5)` ve `son_soklar_ve_beklentiler(...)` -> `(soklar, beklentiler)`: şok sonrası `ufuk` (1, 5, 20g) kümülatif getiri dağılımı ve yukarı olasılık farkı ($\Delta P$)
+- `kosullu_olasilik_tablosu(getiri, kosullar, ufuk=20, vix_seviye, vix_rejim)` çoklu varlık/rejim koşulu altında bağımsız dönemler (±5g ayıklamalı) ve koşullu vs koşulsuz olasılık/medyan farkı
+
+## makas (Ekran 12 İkili Makas ve Göreli Değer)
+- `makas_tarama(getiri, uzun_pencere=250, kisa_pencere=20, min_corr=0.55, ufuk=10, makas_turu='beta')` yüksek korelasyonlu çiftlerde kısa vadeli makas Z-skoru (ex-ante 250g ortalama/std) ve tarihsel ortalamaya dönüş (kapanma) oranı
+- `ikili_makas_serisi(getiri, a, b, kisa_pencere=20, uzun_pencere=250, makas_turu='beta')` seçili çift için normalize performans, ex-ante beta ve makas Z-skoru serileri
+- `makas_geri_donus_testi(getiri, a, b, ...)` $\pm k\sigma$ aşım olaylarından sonraki 5, 10, 20 iş gününde makasın ters yönde kapanma oranı ve medyan kapanma miktarı
+

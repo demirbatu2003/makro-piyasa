@@ -24,6 +24,15 @@ Kullanıcının verdiği işler. **Şimdi yapılmayacak**, en sonda topluca yap�
 ## Yeni varlıklar
 13. BIST30 endeksini ekle (toplayıcı + katalog + bilgi kartı + panolar). Yahoo kodu muhtemelen XU030.IS, doğrulanacak. ŞİMDİ YAPMA, kullanıcı söyleyince.
 
+## İkili İlişki (Ekran 2)
+14. Tarih aralığı seçici şu an sadece grafiği kırpıyor; korelasyon hep son 60g/250g. İstenen: seçilen tarih aralığının TAMAMI için tek bir korelasyon (+ n, Fisher %95 aralığı, beta) gösterilsin; ayrıca aralık seçici daha görünür olsun ve hazır kısayollar (son 1 ay / 3 ay / 1 yıl / 3 yıl / tümü) eklensin. Opsiyonel: pencere uzunluğu (60/250 dışında, örn. 20/120) seçilebilsin. ŞİMDİ YAPMA (Gemini repo üzerinde çalışıyor), kullanıcı söyleyince.
+
+## Yeni istatistikler (GPT önerisinden seçilenler)
+15. Kısmi korelasyon (partial correlation): iki varlık arasındaki ilişkiyi seçilen kontrol değişken(ler)i (örn. DXY, SPX) çıkarıldıktan sonra göster. "Gerçek bağ mı, ortak sebep mi?" Hem ikili ilişki sayfasında (kontrol seçimi) hem mümkünse matris olarak.
+16. Kriz anı ilişkisi: sert düşüş günlerinde (örn. bir varlığın alt %10 günleri) korelasyon / ortak düşüş oranı vs normal günler. Quantile regression yerine anlaşılır "exceedance correlation / downside correlation" versiyonu.
+17. Rolling beta'nın zaman içindeki grafiği (şu an sadece son değer gösteriliyor), güven bandıyla.
+(Atlananlar: Kendall Tau, Granger, Mutual Information, Cointegration — gerekçe sohbette.) ŞİMDİ YAPMA: Gemini bitince, kullanıcı söyleyince tek paket.
+
 ## Hatalar
 10. ✅ yapıldı (2026-10-17) - KÖK NEDEN: masaüstü .bat'ın siyah konsol penceresi kapatılınca sunucu ölüyordu ('Connection error'); ek: okumalar DB'ye yazıyordu, nabız yazımı tüm önbelleği geçersiz kılıyordu (giderildi). Pano 5-10 dk açık kaldıktan sonra hata veriyor (2026-10-17). Hata metni kullanıcıdan bekleniyor. Şüphe: oku.katalog() her okumada DB'ye yazıyor → saatlik nabız göreviyle "database is locked" çakışması; ya da uyku/bağlantı kopması.
 
