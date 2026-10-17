@@ -45,3 +45,8 @@ min gözlem 60g->40, 250g->150; fiyat log-getiri, faiz bp.
 
 ## istatistik
 - `fisher_bant`, `korelasyon_p`, `bh_fdr` (ortak yardımcılar)
+
+## benzer (Ekran 10 Benzer Günler)
+- Analog / koşullu taban oranı; tahmin değil. `ozellik_tablosu`, `zskor` (genişleyen, 500g ısınma), `hedef_seviyeleri`, `ileri_getiriler(seviye, ufuk)`,
+  `analog_bul` (Öklid, aday kesimi H+5, ±20g bağımsızlık), `analiz`/`karsilastir` (analog vs koşulsuz), `walk_forward`, `walk_forward_ozet`, `walk_forward_yorum`, `bugunun_durumu`.
+- Özellik için son gözlem en fazla 5 takvim günü taşınır; sonuçlarda ileri doldurma yok. Ayrıntı: modül docstring'i.

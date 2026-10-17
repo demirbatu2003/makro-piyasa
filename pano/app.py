@@ -20,5 +20,6 @@ sayfalar = [
     st.Page(S + "s7_nabiz.py", title="7 Piyasa Nabzı", url_path="nabiz"),
     st.Page(S + "s8_yavas.py", title="8 Yavaş / Bağlam", url_path="yavas"),
     st.Page(S + "s9_kavramlar.py", title="9 Kavramlar", url_path="kavramlar"),
+    st.Page(S + "s10_benzer_gunler.py", title="10 Benzer Günler", url_path="benzer"),
 ]
 st.navigation(sayfalar).run()
